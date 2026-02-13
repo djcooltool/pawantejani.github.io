@@ -1,270 +1,462 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pawan Tejani - Visual CV</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f2f2f2;
-            color: #333;
-            margin: 0;
-            padding: 0;
-            font-size: 16px;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Interactive professional resume website for Pawan Tejani - Senior Program & Project Manager | Customer Success Manager." />
+  <title>Pawan Tejani | Interactive Resume</title>
+  <style>
+    :root {
+      --bg: #0b1220;
+      --bg-soft: #121b2f;
+      --card: rgba(18, 27, 47, 0.8);
+      --text: #e8eefc;
+      --muted: #a5b3d6;
+      --accent: #48a7ff;
+      --accent-2: #45e0c0;
+      --border: rgba(120, 150, 210, 0.25);
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.28);
+    }
 
-        header {
-            background-color: #0078d4;
-            color: #fff;
-            text-align: center;
-            padding: 1rem;
-        }
+    * { box-sizing: border-box; }
 
-        header h1 {
-            font-size: 2rem;
-            margin: 0;
-        }
+    html { scroll-behavior: smooth; }
 
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            background-color: #f9f9f9;
-        }
+    body {
+      margin: 0;
+      font-family: Inter, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background:
+        radial-gradient(circle at 15% 10%, rgba(72, 167, 255, 0.2), transparent 35%),
+        radial-gradient(circle at 85% 20%, rgba(69, 224, 192, 0.16), transparent 35%),
+        linear-gradient(180deg, #070d18 0%, #0b1220 100%);
+      color: var(--text);
+      min-height: 100vh;
+    }
 
-        .section {
-            margin-bottom: 20px;
-        }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem;
+    }
 
-        .section h2 {
-            color: #0078d4;
-            font-size: 1.8rem;
-        }
+    .top-nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(8px);
+      background: rgba(5, 10, 20, 0.65);
+      border-bottom: 1px solid var(--border);
+    }
 
-        .section p {
-            font-size: 1.1rem;
-        }
+    .top-nav .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
 
-        ul {
-            list-style: disc;
-            padding-left: 20px;
-        }
+    .brand {
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      color: white;
+    }
 
-        ul li {
-            font-size: 1.1rem;
-        }
+    .top-nav a {
+      color: var(--muted);
+      text-decoration: none;
+      margin-right: 0.75rem;
+      font-size: 0.92rem;
+    }
 
-        a {
-            color: #0078d4;
-            text-decoration: none;
-        }
+    .top-nav a:hover,
+    .top-nav a:focus-visible { color: var(--accent); }
 
-        a:hover {
-            color: #0050aa;
-        }
-    </style>
+    .hero {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 1.2rem;
+      margin-top: 1rem;
+      align-items: stretch;
+    }
+
+    .panel {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      padding: 1.25rem;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(1.7rem, 4vw, 2.8rem);
+      line-height: 1.1;
+    }
+
+    .tagline {
+      color: var(--accent-2);
+      margin-top: 0.35rem;
+      font-weight: 600;
+      font-size: 1.05rem;
+    }
+
+    .hero p { color: var(--muted); line-height: 1.5; }
+
+    .contact-list {
+      margin: 0.9rem 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 0.5rem;
+    }
+
+    .contact-list a {
+      color: var(--text);
+      text-decoration: none;
+      border-bottom: 1px dotted rgba(232, 238, 252, 0.4);
+    }
+
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.8rem;
+      margin-top: 0.7rem;
+    }
+
+    .kpi {
+      padding: 0.8rem;
+      border-radius: 12px;
+      background: rgba(9, 17, 32, 0.8);
+      border: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .kpi strong {
+      font-size: 1.3rem;
+      color: var(--accent);
+      display: block;
+    }
+
+    section {
+      margin-top: 1rem;
+      scroll-margin-top: 70px;
+    }
+
+    .section-title {
+      font-size: 1.35rem;
+      margin: 0 0 0.7rem;
+    }
+
+    .chip-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .chip {
+      border: 1px solid var(--border);
+      background: rgba(7, 13, 24, 0.8);
+      color: #d8e5ff;
+      border-radius: 999px;
+      padding: 0.45rem 0.8rem;
+      font-size: 0.87rem;
+    }
+
+    .achievements {
+      display: grid;
+      gap: 0.6rem;
+      padding-left: 1.1rem;
+      color: var(--muted);
+    }
+
+    .timeline {
+      display: grid;
+      gap: 0.8rem;
+    }
+
+    details.role {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: rgba(7, 13, 24, 0.72);
+      overflow: hidden;
+    }
+
+    details.role summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 0.9rem;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 0.6rem;
+      align-items: center;
+    }
+
+    details.role summary::-webkit-details-marker { display: none; }
+
+    .role-title {
+      font-weight: 650;
+      font-size: 1rem;
+      color: #f1f6ff;
+    }
+
+    .meta {
+      color: var(--muted);
+      font-size: 0.85rem;
+      margin-top: 0.15rem;
+    }
+
+    .pill {
+      color: #00172e;
+      background: linear-gradient(120deg, var(--accent), #98ccff);
+      border-radius: 999px;
+      padding: 0.25rem 0.6rem;
+      font-size: 0.8rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .role-body {
+      border-top: 1px solid var(--border);
+      padding: 0.9rem;
+      color: var(--muted);
+    }
+
+    .role-body ul {
+      margin: 0;
+      padding-left: 1.1rem;
+      display: grid;
+      gap: 0.45rem;
+    }
+
+    .edu-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.7rem;
+    }
+
+    .edu-item {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 0.8rem;
+      background: rgba(7, 13, 24, 0.72);
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      padding: 1.3rem 0 2rem;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
+      .edu-grid { grid-template-columns: 1fr; }
+      .top-nav .container { justify-content: center; }
+    }
+
+    @media (max-width: 620px) {
+      .container { padding: 0.75rem; }
+      .panel { padding: 1rem; }
+      .kpi-grid { grid-template-columns: 1fr 1fr; }
+      details.role summary { grid-template-columns: 1fr; }
+      .pill { justify-self: start; }
+      .top-nav a { margin-right: 0.5rem; }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Pawan Tejani</h1>
-        <p>Logistics & Operations Manager</p>
-    </header>
+  <nav class="top-nav" aria-label="Resume sections navigation">
     <div class="container">
-        <div class="section">
-            <h2>About Me</h2>
-            <p>Name: Pawan Tejani</p>
-            <p>Email: pawantejani86@gmail.com</p>
-            <p>Mobile: +91 9822523377</p>
-            <p>LinkedIn: <a href="https://www.linkedin.com/in/pawan-tejani/">https://www.linkedin.com/in/pawan-tejani/</a></p>
-        </div>
-        <div class="section">
-            <h2>Summary</h2>
-            <p>Experienced Logistics & Operations Manager with over 15 years of expertise in managing operations, supply chain, and logistics across diverse industries. Demonstrates self-motivation, commitment, problem-solving, and a results-driven approach to achieve organizational objectives. Adept at developing and implementing strategic plans to optimize workflows, reduce costs, and improve efficiency. Successfully earned an MSc in Project Management from the University of Portsmouth, graduating with Merit, where I developed expertise in Project Lifecycle Management, planning, risk management, and stakeholder management. Proven track record of leading cross-functional teams to achieve operational goals, problem-solving, and exceed customer expectations. Skilled in using data analysis and KPIs to drive process improvements and increase productivity.</p>
-        </div>
-        <div class="section">
-            <h2>Skills</h2>
-            <ul>
-                <li>Project management</li>
-                <li>Supply chain management</li>
-                <li>Logistics & warehouse management</li>
-                <li>Operations management</li>
-                <li>Six Sigma Tools – Kaizen, FMEA, Root Cause Analysis, Poka Yoke, Gemba, SMART, DMAIC, 5Whys, Pareto, PDCA, 5S</li>
-                <li>Business Analytics & Data Visualization</li>
-                <li>Customer service</li>
-                <li>Team management</li>
-                <li>Change Management</li>
-                <li>Stakeholder management</li>
-                <li>Global customer management</li>
-                <li>Microsoft Office Suite – Advanced Excel, PowerPoint, Word, Power BI, Access & Visio</li>
-                <li>Microsoft VBA – Automation</li>
-                <li>Data Analytics</li>
-                <li>Microsoft Projects</li>
-                <li>SAP - ERP</li>
-                <li>CRM software</li>
-            </ul>
-        </div>
-        <!-- Add this code to your HTML file where you want the career progress section to appear -->
-        <div class="section" id="career-progress">
-            <h2>Career Progress</h2>
-            <div class="timeline">
-                <div class="entry">
-                    <div class="date">2007 - 2014</div>
-                    <div class="content">
-                        <h3>Quality Control Specialist</h3>
-                        <p>Started my career as a Quality Control Specialist at TracMail AR...</p>
-                    </div>
-                </div>
-        
-                <!-- Add more entries for each career milestone -->
-                <div class="entry">
-                    <div class="date">2014 - 2017</div>
-                    <div class="content">
-                        <h3>Assistant Manager Operations</h3>
-                        <p>Managed the account for Cisco Systems, led projects, and achieved significant improvements...</p>
-                    </div>
-                </div>
-        
-                <div class="entry">
-                    <div class="date">2017 - 2019</div>
-                    <div class="content">
-                        <h3>Senior Manager</h3>
-                        <p>Managed multiple clients, streamlined operations, and achieved cost savings...</p>
-                    </div>
-                </div>
-        
-                <div class="entry">
-                    <div class="date">2019 - 2022</div>
-                    <div class="content">
-                        <h3>Assistant Manager - Customer Service</h3>
-                        <p>Led a Customer Service team, managed P&L business, and implemented innovative projects...</p>
-                    </div>
-                </div>
-        
-                <div class="entry">
-                    <div class="date">2023 - Present</div>
-                    <div class="content">
-                        <h3>Operations Manager</h3>
-                        <p>Leading and supervising support staff, ensuring compliance, and facilitating training...</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="section">
-            <h2>Career History</h2>
-            <p><strong>Operations Manager – Sarinity Homes Limited</strong></p>
-            <p>Feb 2023 – Sep 2023</p>
-            <ul>
-                <li>Lead, manage, and supervise support staff team (14 staff members), providing guidance, feedback & support to ensure optimal performance and professional growth.</li>
-                <li>Monitor and manage the overall program activities, ensuring compliance with all organizational policies, procedures, and regulations.</li>
-                <li>Collaborate with staff to create and implement individualized support plans for young people, ensuring their physical, emotional, and social well-being.</li>
-                <li>Facilitate training and professional development opportunities for support staff, keeping them informed about best practices, regulations, and industry trends.</li>
-            </ul>
-            <ul>
-                <li>Completed Setup of OneDrive for smooth operations within multiple sites.</li>
-                <li>Created Reports and Dashboards from Care Portal.</li>
-                <li>Drafted all the Regulatory Policies.</li>
-            </ul>
-            <p><strong>Assistant Manager – Customer Service – SCM, B Braun Medical India Pvt Ltd.</strong></p>
-            <p>Nov 2019 – Nov 2021</p>
-            <ul>
-                <li>Lead and guide a 12-member Customer Service team across the country.</li>
-                <li>Serve as the single point of contact for internal and external customers for P&L business, ensuring timely resolution of complaints and inquiries within two days.</li>
-                <li>Manage credit note settlements to be issued within 7 days and oversee order to invoice, complaint management, and system integration processes.</li>
-                <li>Collaborate with the planning team on order fulfillment and provide regular reports, trackers, MIS, and presentations, conducting zonal reviews and C&F reviews.</li>
-                <li>Consult with the Regional SAP IT team for systems development and with customers to strengthen the customer-organization interface.</li>
-                <li>Collect monthly feedback from the top 10 customers of all business divisions to drive process improvement and conduct customer visits, surveys, and feedback for a customer-centric supply chain.</li>
-                <li>Conduct monthly reviews with the internal stakeholders - Regional Sales Heads, Finance Heads along with SCM Team for performance management and perform an annual audit with PwC auditors for entire SCM functions.</li>
-                <li>Coordinate with Technical team, R&D, Business Units, planner & repair team to ensure service level are met.</li>
-            </ul>
-            <ul>
-                <li>Implemented "Track On" sim card tracking project for real-time tracking of full truck load deliveries by customers i.e., hospitals and distributors, placing 2nd runner up in the company's Smart Innovation competition in Asia.</li>
-                <li>Track On Project enabled in optimization of Transportation Management processes leading to manpower savings and 100% accurate transactions.</li>
-                <li>Spearheading the merger of Customer Service, Sales & Logistics telephone lines to a Centralized IVR & Remote Access to Executives – Project "Customer Centricity".</li>
-                <li>Redesigned and implemented procedures that decreased invoice processing turnaround time by 69% under my Leadership.</li>
-                <li>Cut down resource costs by 33% while maintaining resource cost within the budget cost improving operational efficiency.</li>
-                <li>Trained staff to achieve the agreed KPIs within 2 months of starting the role.</li>
-                <li>Wrote detailed AS IS & TO BE documents and process maps.</li>
-                <li>Developed a comprehensive Power BI dashboard for the Inventory Management team, facilitating seamless access to product-level forecasting through an intuitive interface and customizable criteria.</li>
-                <li>Introduced Excel Macros that lowered response time from 45 minutes to 10 minutes.</li>
-            </ul>
-            <p><strong>Senior Manager – Mahindra Logistics</strong></p>
-            <p>Jan 2017 – Nov 2019</p>
-            <ul>
-                <li>Manage 30+ internal and external clients, focusing on tracking, data analytical, reporting, and customer service.</li>
-                <li>Implementation of a one-stop shop model for all accounts, streamlining operations with a centralized control tower.</li>
-                <li>Perform reliability and risk assessments for clients to ensure accurate project delivery.</li>
-                <li>Understand Customer Requirements and work accordingly with the deliverables.</li>
-                <li>Draft standard operating procedures (SOP) for each operation under the centralized transport control tower.</li>
-                <li>Analyze KPI results and identify reasons for shortfalls based on data analysis.</li>
-                <li>Develop strategies for cost savings and produce action plans.</li>
-                <li>Evaluate performance through measurements and continuously improve.</li>
-                <li>Manage the Mahindra Automotive auto sector for finished cars postproduction and spare parts for after-sales service.</li>
-                <li>Actively encouraged and supported team members in pursuing continuous professional development to enhance skills and knowledge.</li>
-                <li>Responsible for creating performance metrics dashboards and publishing them to the customer.</li>
-            </ul>
-            <ul>
-                <li>Achieved 35% cost savings through process improvements and data analytics automation.</li>
-                <li>Automated 27 tracking sheets, reducing errors, and saving time for the team to work on large data.</li>
-                <li>Led the Data Analytics team, guiding them in process automation that saved 12 hours of man-hours per day within the team of 45 executives.</li>
-                <li>Drafted detailed SOP, AS IS & TO BE processes and process maps for all accounts managed under Control Tower, receiving appreciation from senior management.</li>
-                <li>Wrote detailed AS IS & TO BE and process maps.</li>
-                <li>Manager of the Year – Half Yearly, Mahindra Logistics, 2019</li>
-            </ul>
-            <p><strong>Assistant Manager Operations – Cisco Systems / DHL Supply Chain</strong></p>
-            <p>Mar 2014 – Jan 2017</p>
-            <ul>
-                <li>Manage the account for Cisco Systems - Plan, forecast and secure all unsettled assets within the various KPI.</li>
-                <li>Project Leader for process migration from DHL SC UK to DHL SC India.</li>
-                <li>Refining the return process and delivery of parts back to warehouse.</li>
-                <li>Achieved 30-day KPI target by improving transit time and recovering assets by the 20th day.</li>
-                <li>Championed team member succession planning, fostering career growth and development opportunities.</li>
-                <li>Utilized my expertise in administration to drive productivity and cost-effectiveness, contributing to the overall success of the organization.</li>
-                <li>Guiding and mentoring team members to assume second-in-command roles, ensuring a seamless transition as part of their progression before their promotion.</li>
-            </ul>
-            <ul>
-                <li>Documented AS IS & TO BE processes & maps for Accounts under Control Tower.</li>
-                <li>Managed projects for 4 customers, 2 continents, 13 countries, and 24+ employees.</li>
-                <li>Visited Manchester, UK for process migration to Mumbai, India and completed on-site training in planned time.</li>
-                <li>Redesigned procedures, reducing turnaround time for invoice processing by 69% and surpassing bad-debt recovery goal.</li>
-                <li>Recovered 12M INR against the unresolved/overdue assets of 26M INR from the Customers in Recovery Project before the unresolved assets being written off.</li>
-                <li>Featured in UK&I Magazine with accolades on Process Transition and Project Performance delivery.</li>
-                <li>Decreased Daily Sales Outstanding by 54%, Daily Sales Accrual by 40% leading to faster recovery of revenue from customers (accounts receivable activity) and POD retrieval activity.</li>
-                <li>Performer of the Year – Half Yearly, DHL Supply Chain, 2016</li>
-                <li>2 Promotions achieved – from Senior Executive to Team Leader in 8 months and from Team Leader to Assistant manager in next 1 year.</li>
-            </ul>
-        </div>
-        <div class="section">
-            <h2>Education</h2>
-            <p><strong>MSc Project Management, University of Portsmouth</strong></p>
-            <p>Merit, Sep 2022</p>
-            <ul>
-                <li>Budget And Commercial Management</li>
-                <li>People Management and Risk</li>
-                <li>Project Environment and Planning</li>
-                <li>Project Investigation and System Methods</li>
-                <li>Project Management Case Study Investigation</li>
-                <li>Managing Programmes and Portfolios</li>
-            </ul>
-            <p><strong>Bachelor of Commerce, Mumbai University in Mumbai</strong></p>
-            <p>2007</p>
-        </div>
-        <div class="section">
-            <h2>Certifications</h2>
-            <ul>
-                <li>APM Associate – Association of Project Management UK, Mar 2023</li>
-                <li>Become a Power BI Specialist – LinkedIn, Sep 2023</li>
-                <li>Build a Successful Career in Project Management – LinkedIn, Jan 2023</li>
-                <li>Project Management: Solving Common Project Problems – LinkedIn, Sep 2022</li>
-                <li>Bootcamp for KNIME Analytics Platform – May 2020</li>
-                <li>Programming Language – C++, C#, Java – NIIT</li>
-                <li>Certified Supply Chain Specialist - DHL Supply Chain India</li>
-                <li>Microsoft Excel & Access Training – DHL Supply Chain India</li>
-            </ul>
-        </div>
+      <div class="brand">Pawan Tejani</div>
+      <div>
+        <a href="#profile">Profile</a>
+        <a href="#achievements">Achievements</a>
+        <a href="#competencies">Competencies</a>
+        <a href="#career">Career</a>
+        <a href="#education">Education</a>
+      </div>
     </div>
+  </nav>
+
+  <main class="container">
+    <section class="hero" id="profile">
+      <article class="panel">
+        <h1>Pawan Tejani</h1>
+        <div class="tagline">Senior Program &amp; Project Manager | Customer Success Manager</div>
+        <p>
+          Dynamic professional with 10+ years of experience driving process intelligence, business transformation,
+          and customer-centric delivery across global operations. Known for translating complex challenges into
+          scalable solutions that improve performance, reduce costs, and accelerate outcomes.
+        </p>
+        <ul class="contact-list">
+          <li>LinkedIn: <a href="https://www.linkedin.com/in/pawan-tejani/" target="_blank" rel="noopener">linkedin.com/in/pawan-tejani</a></li>
+          <li>Email: <a href="mailto:pawantejani86@gmail.com">pawantejani86@gmail.com</a></li>
+          <li>Mobile: <a href="tel:+919822527733">+91 9822527733</a></li>
+        </ul>
+      </article>
+
+      <aside class="panel" aria-label="Career highlights">
+        <h2 class="section-title">Impact Snapshot</h2>
+        <div class="kpi-grid">
+          <div class="kpi"><strong>35%</strong>Cost savings</div>
+          <div class="kpi"><strong>69%</strong>Faster invoice turnaround</div>
+          <div class="kpi"><strong>13</strong>Countries delivered</div>
+          <div class="kpi"><strong>24+</strong>Team members led</div>
+        </div>
+      </aside>
+    </section>
+
+    <section id="achievements" class="panel">
+      <h2 class="section-title">Key Achievements</h2>
+      <ul class="achievements">
+        <li>Recovered INR 1.30 Cr from INR 2.6 Cr in a recovery initiative, preventing major write-offs.</li>
+        <li>Reduced invoice processing turnaround by 69% and improved DSO by 54% using process redesign and automation.</li>
+        <li>Led multi-regional execution across 13 countries and two continents with successful on-time delivery.</li>
+        <li>Maintained customer satisfaction above 90% while managing data, migration, and transformation programs.</li>
+        <li>Received industry recognition in DHL UK&amp;I Magazine for process transition and delivery excellence.</li>
+      </ul>
+    </section>
+
+    <section id="competencies" class="panel">
+      <h2 class="section-title">Core Competencies</h2>
+      <div class="chip-wrap">
+        <span class="chip">Project & Program Governance</span>
+        <span class="chip">Customer Success & Stakeholder Management</span>
+        <span class="chip">Lean Six Sigma & Process Excellence</span>
+        <span class="chip">Agile / Scrum Delivery</span>
+        <span class="chip">Data Analytics (Excel, SQL, Tableau, Power BI)</span>
+        <span class="chip">Risk Management & Financial Control</span>
+        <span class="chip">Supply Chain & ERP Operations</span>
+        <span class="chip">Process Mapping (AS-IS / TO-BE)</span>
+        <span class="chip">Cross-Regional Team Leadership</span>
+        <span class="chip">Automation (VBA, Macros, Workflow Optimization)</span>
+      </div>
+    </section>
+
+    <section id="career" class="panel">
+      <h2 class="section-title">Career Timeline (Tap to Explore)</h2>
+      <div class="timeline">
+        <details class="role" open>
+          <summary>
+            <div>
+              <div class="role-title">Senior Program &amp; Project Manager · LTIMindtree, Mumbai</div>
+              <div class="meta">Sep 2024 – Present</div>
+            </div>
+            <span class="pill">Current</span>
+          </summary>
+          <div class="role-body">
+            <ul>
+              <li>Leading DWH, BI, Data Lake, migration, and analytics programs with strong governance and delivery controls.</li>
+              <li>Driving KPI/OKR tracking, risk register management, financial reviews, and cross-functional stakeholder updates.</li>
+              <li>Built training enablement on AWS, Databricks, Airflow, Jira, and Git with full certification completion.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="role">
+          <summary>
+            <div>
+              <div class="role-title">Operations Manager · Sarinitiy Homes Limited, London</div>
+              <div class="meta">Feb 2023 – Jan 2024</div>
+            </div>
+            <span class="pill">Leadership</span>
+          </summary>
+          <div class="role-body">
+            <ul>
+              <li>Improved team productivity by 30% via focused coaching, operational structure, and project tool adoption.</li>
+              <li>Managed Microsoft 365/SharePoint documentation with GDPR-compliant controls and reporting.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="role">
+          <summary>
+            <div>
+              <div class="role-title">Program Manager – SCM · B Braun Medical India</div>
+              <div class="meta">Nov 2019 – Nov 2021</div>
+            </div>
+            <span class="pill">Supply Chain</span>
+          </summary>
+          <div class="role-body">
+            <ul>
+              <li>Led a 25-member SCM function for India, managing order-to-cash and customer-centric delivery KPIs.</li>
+              <li>Owned warehouse migration to 3PL, including RFQ, compliance, assessment, and vendor selection.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="role">
+          <summary>
+            <div>
+              <div class="role-title">Senior Manager – Control Tower &amp; Analytics · Mahindra Logistics</div>
+              <div class="meta">Jan 2017 – Nov 2019</div>
+            </div>
+            <span class="pill">Analytics</span>
+          </summary>
+          <div class="role-body">
+            <ul>
+              <li>Managed control tower operations with 60 headcount and 75K+ monthly shipments.</li>
+              <li>Delivered 35% savings through automation, dashboards, and data-driven performance actions.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="role">
+          <summary>
+            <div>
+              <div class="role-title">Earlier Roles · DHL, KServe BPO, TracMail AR Services</div>
+              <div class="meta">Nov 2007 – Jan 2017</div>
+            </div>
+            <span class="pill">Foundation</span>
+          </summary>
+          <div class="role-body">
+            <ul>
+              <li>Progressed from quality and operations roles into client-facing leadership and process transformation.</li>
+              <li>Built strong foundations in service quality, recoveries, KPI governance, and customer operations.</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <section id="education" class="panel">
+      <h2 class="section-title">Education, Certifications &amp; Associations</h2>
+      <div class="edu-grid">
+        <div class="edu-item">
+          <strong>MSc in Project Management</strong>
+          <div class="meta">University of Portsmouth, UK · 2021–2022</div>
+        </div>
+        <div class="edu-item">
+          <strong>BSc in Business Administration</strong>
+          <div class="meta">University of Mumbai, India · 2007–2010</div>
+        </div>
+        <div class="edu-item">
+          <strong>Associate – APM</strong>
+          <div class="meta">Association for Project Management · 2023</div>
+        </div>
+        <div class="edu-item">
+          <strong>Recent Learning Focus</strong>
+          <div class="meta">GenAI for PMs, Microsoft 365, Project Online, KNIME, AI in PM</div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      Reference available upon request · Built as an HTML5 interactive resume with mobile-first responsiveness.
+    </footer>
+  </main>
+
+  <script>
+    const details = document.querySelectorAll('details.role');
+    details.forEach((block) => {
+      block.addEventListener('toggle', () => {
+        if (!block.open) return;
+        details.forEach((other) => {
+          if (other !== block) other.open = false;
+        });
+      });
+    });
+  </script>
 </body>
 </html>
